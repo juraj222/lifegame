@@ -17,15 +17,30 @@ public class GameLogic {
         for(int x = 0; x < map.length; x++ ){
            for(int y =0; y < map[0].length; y++){
                int numOfNeighbours = checkNumberOfNeighbours(map, y, x);
-               applyRuleOne(resultMap,x ,y , numOfNeighbours);
+               applyRuleUnderPopulation(resultMap,x ,y , numOfNeighbours);
+               applyRuleOverPopulation(resultMap, x, y, numOfNeighbours);
+               applyRuleProduction(resultMap, x, y, numOfNeighbours);
            }
         }
+        map = resultMap;
         return resultMap;
     }
 
-    private void applyRuleOne(byte[][] resultMap, int x, int y, int numOfNei) {
+    private void applyRuleUnderPopulation(byte[][] resultMap, int x, int y, int numOfNei) {
         if(numOfNei < 2 && resultMap[x][y] != 0) {
             resultMap[x][y] = 0;
+        }
+    }
+
+    private void applyRuleOverPopulation(byte[][] resultMap, int x, int y, int numOfNei) {
+        if(numOfNei > 3 && resultMap[x][y] != 0) {
+            resultMap[x][y] = 0;
+        }
+    }
+
+    private void applyRuleProduction(byte[][] resultMap, int x, int y, int numOfNei) {
+        if(numOfNei == 3 && resultMap[x][y] != 1) {
+            resultMap[x][y] = 1;
         }
     }
 

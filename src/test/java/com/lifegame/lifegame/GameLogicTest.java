@@ -23,6 +23,7 @@ public class GameLogicTest {
         GameLogic gl = new GameLogic(map);
         assertThat(gl.doStep()).isEqualTo(mapResult);
     }
+
     @Test
     void underPopulationTest2(){
         byte map[][] = {{ 0, 0, 0, 0 },
@@ -35,6 +36,42 @@ public class GameLogicTest {
                                 { 0, 0, 0, 0 },
                                 { 1, 1, 0, 0 },
                                 { 0, 1, 0, 0 } };
+        GameLogic gl = new GameLogic(map);
+        byte[][] mapFromDoStep = gl.doStep();
+        printMap(mapFromDoStep);
+        assertThat(mapFromDoStep).isEqualTo(mapResult);
+    }
+
+    @Test
+    void overPopulationTest(){
+        byte map[][] = {{ 0, 0, 0, 0 },
+                { 0, 0, 1, 0 },
+                { 0, 0, 0, 0 },
+                { 1, 1, 1, 1 },
+                { 0, 1, 0, 1 } };
+        byte mapResult[][] = {  { 0, 0, 0, 0 },
+                { 0, 0, 0, 0 },
+                { 0, 0, 0, 0 },
+                { 1, 1, 0, 1 },
+                { 0, 1, 0, 1 } };
+        GameLogic gl = new GameLogic(map);
+        byte[][] mapFromDoStep = gl.doStep();
+        printMap(mapFromDoStep);
+        assertThat(mapFromDoStep).isEqualTo(mapResult);
+    }
+
+    @Test
+    void productionTest(){
+        byte map[][] = {{ 0, 0, 0, 0 },
+                        { 0, 0, 0, 0 },
+                        { 0, 0, 0, 0 },
+                        { 1, 1, 1, 1 },
+                        { 0, 0, 0, 0 } };
+        byte mapResult[][] = {  { 0, 0, 0, 0 },
+                                { 0, 0, 0, 0 },
+                                { 0, 1, 1, 0 },
+                                { 0, 1, 1, 0 },
+                                { 0, 1, 1, 1 } };
         GameLogic gl = new GameLogic(map);
         byte[][] mapFromDoStep = gl.doStep();
         printMap(mapFromDoStep);
