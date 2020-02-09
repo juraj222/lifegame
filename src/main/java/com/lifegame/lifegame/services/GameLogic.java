@@ -31,13 +31,13 @@ public class GameLogic {
 
     public int checkNumberOfNeighbours(byte[][] map, int y, int x) {
         int neighbours = 0;
-        if(x-1 > 0 && map[x-1][y] == 1){
+        if(x-1 >= 0 && map[x-1][y] == 1){
             neighbours++;
         }
         if(x+1 < map.length && map[x+1][y] == 1){
             neighbours++;
         }
-        if(y-1 > 0 && map[x][y-1] == 1){
+        if(y-1 >= 0 && map[x][y-1] == 1){
             neighbours++;
         }
         if(y+1 < map[0].length && map[x][y+1] == 1){
@@ -45,16 +45,16 @@ public class GameLogic {
         }
 
         //corners
-        if((x-1 > 0 && y-1 > 0) && map[x-1][y-1] == 1){
+        if((x-1 >= 0 && y-1 >= 0) && map[x-1][y-1] == 1){
             neighbours++;
         }
         if((x+1 < map.length && y+1 < map[0].length) && map[x+1][y+1] == 1){
             neighbours++;
         }
-        if((y-1 > 0 && x+1 < map.length) && map[x+1][y-1] == 1){
+        if((y-1 >= 0 && x+1 < map.length) && map[x+1][y-1] == 1){
             neighbours++;
         }
-        if((x-1 > 0 && y+1 < map[0].length) && map[x-1][y+1] == 1){
+        if((x-1 >= 0 && y+1 < map[0].length) && map[x-1][y+1] == 1){
             neighbours++;
         }
         return neighbours;

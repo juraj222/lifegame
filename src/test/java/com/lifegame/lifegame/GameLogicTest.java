@@ -86,6 +86,17 @@ public class GameLogicTest {
         assertThat(gl.checkNumberOfNeighbours(map,2,3)).isEqualTo(8);
     }
 
+    @Test
+    void checkNeighboursNonZero3(){
+        byte map[][] = {{ 0, 0, 0, 0 },
+                        { 0, 0, 0, 0 },
+                        { 0, 0, 0, 0 },
+                        { 1, 1, 0, 0 },
+                        { 0, 1, 0, 0 } };
+        GameLogic gl = new GameLogic(map);
+        assertThat(gl.checkNumberOfNeighbours(map,1,3)).isEqualTo(2);
+    }
+
     private void printMap(byte[][] map){
         for(int x = 0; x < map.length; x++ ){
             for(int y =0; y < map[0].length; y++){
