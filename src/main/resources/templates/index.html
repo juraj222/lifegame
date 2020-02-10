@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Life game</title>
+
+  <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
+  <link rel="stylesheet" th:href="@{/css/main.css}"/>
+
+</head>
+
+<body>
+
+<main role="main" class="container">
+TEST
+<!--  <div id="game" th:text="${map}">Test</div>-->
+  <form action="#" th:action="@{'/clear'}">
+    <button type="submit" id="clear">clear</button>
+  </form>
+  <table>
+    <th:block th:each="map : ${maps}">
+      <tr>
+        <td th:text="${map}"></td>
+      </tr>
+    </th:block>
+  </table>
+  <ol>
+    <li th:each="map : ${maps}" th:text="${map}"></li>
+  </ol>
+  <script>
+    setTimeout(function(){
+      window.location.reload();
+    }, 1000);
+  </script>
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+  <!--<script>-->
+  <!--  function setTime() {-->
+  <!--    // get a new date (locale machine date time)-->
+  <!--    var date = new Date();-->
+  <!--    // get the date as a string-->
+  <!--    var n = date.toDateString();-->
+  <!--    // get the time as a string-->
+  <!--    var time = date.toLocaleTimeString();-->
+  <!--    document.getElementById("game").innerHTML = time;-->
+  <!--  }-->
+  <!--</script>-->
+  <!--<script>-->
+  <!--  $(document).ready(function(){-->
+  <!--    setInterval(function(){-->
+  <!--      $("#game").load(window.location.href + " #game" );-->
+  <!--    }, 3000);-->
+  <!--  });-->
+  <!--</script>-->
+</main>
+<!-- /.container -->
+
+<script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+</body>
+</html>

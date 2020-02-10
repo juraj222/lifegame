@@ -20,8 +20,8 @@ public class GameLogicTest {
                                 { 0, 0, 0, 0 },
                                 { 0, 0, 0, 0 },
                                 { 0, 0, 0, 0 } };
-        GameLogic gl = new GameLogic(map);
-        assertThat(gl.doStep()).isEqualTo(mapResult);
+        GameLogic gl = new GameLogic();
+        assertThat(gl.doStep(map)).isEqualTo(mapResult);
     }
 
     @Test
@@ -36,8 +36,8 @@ public class GameLogicTest {
                                 { 0, 0, 0, 0 },
                                 { 1, 1, 0, 0 },
                                 { 0, 1, 0, 0 } };
-        GameLogic gl = new GameLogic(map);
-        byte[][] mapFromDoStep = gl.doStep();
+        GameLogic gl = new GameLogic();
+        byte[][] mapFromDoStep = gl.doStep(map);
         printMap(mapFromDoStep);
         assertThat(mapFromDoStep).isEqualTo(mapResult);
     }
@@ -54,8 +54,8 @@ public class GameLogicTest {
                 { 0, 0, 0, 0 },
                 { 1, 1, 0, 1 },
                 { 0, 1, 0, 1 } };
-        GameLogic gl = new GameLogic(map);
-        byte[][] mapFromDoStep = gl.doStep();
+        GameLogic gl = new GameLogic();
+        byte[][] mapFromDoStep = gl.doStep(map);
         printMap(mapFromDoStep);
         assertThat(mapFromDoStep).isEqualTo(mapResult);
     }
@@ -72,8 +72,8 @@ public class GameLogicTest {
                                 { 0, 1, 1, 0 },
                                 { 0, 1, 1, 0 },
                                 { 0, 1, 1, 1 } };
-        GameLogic gl = new GameLogic(map);
-        byte[][] mapFromDoStep = gl.doStep();
+        GameLogic gl = new GameLogic();
+        byte[][] mapFromDoStep = gl.doStep(map);
         printMap(mapFromDoStep);
         assertThat(mapFromDoStep).isEqualTo(mapResult);
     }
@@ -85,7 +85,7 @@ public class GameLogicTest {
                         { 0, 0, 0, 0 },
                         { 1, 1, 0, 1 },
                         { 0, 1, 0, 1 } };
-        GameLogic gl = new GameLogic(map);
+        GameLogic gl = new GameLogic();
         assertThat(gl.checkNumberOfNeighbours(map,0,0)).isEqualTo(0);
     }
 
@@ -96,7 +96,7 @@ public class GameLogicTest {
                         { 0, 0, 0, 0 },
                         { 1, 1, 0, 1 },
                         { 0, 1, 0, 1 } };
-        GameLogic gl = new GameLogic(map);
+        GameLogic gl = new GameLogic();
         assertThat(gl.checkNumberOfNeighbours(map,2,1)).isEqualTo(0);
     }
 
@@ -107,7 +107,7 @@ public class GameLogicTest {
                         { 0, 0, 0, 0 },
                         { 1, 1, 0, 1 },
                         { 0, 1, 0, 1 } };
-        GameLogic gl = new GameLogic(map);
+        GameLogic gl = new GameLogic();
         assertThat(gl.checkNumberOfNeighbours(map,2,2)).isEqualTo(2);
     }
 
@@ -119,7 +119,7 @@ public class GameLogicTest {
                         { 0, 1, 1, 1 },
                         { 0, 1, 0, 1 },
                         { 0, 1, 1, 1 } };
-        GameLogic gl = new GameLogic(map);
+        GameLogic gl = new GameLogic();
         assertThat(gl.checkNumberOfNeighbours(map,2,3)).isEqualTo(8);
     }
 
@@ -130,7 +130,7 @@ public class GameLogicTest {
                         { 0, 0, 0, 0 },
                         { 1, 1, 0, 0 },
                         { 0, 1, 0, 0 } };
-        GameLogic gl = new GameLogic(map);
+        GameLogic gl = new GameLogic();
         assertThat(gl.checkNumberOfNeighbours(map,1,3)).isEqualTo(2);
     }
 

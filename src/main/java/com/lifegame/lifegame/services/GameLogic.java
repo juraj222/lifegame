@@ -1,15 +1,29 @@
 package com.lifegame.lifegame.services;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class GameLogic {
-    byte map [][];
-
-    public GameLogic(byte[][] map) {
-        this.map = map;
+    public GameLogic() {
     }
 
-    public byte[][] doStep() {
+    public byte[][] doStep(byte[][] map) {
+        if(map == null){
+            map = new byte[][] {{ 1, 0, 0, 0, 0, 1, 0, 0, 1, 0 },
+                                { 0, 0, 1, 0, 0, 1, 0, 0, 1, 0 },
+                                { 0, 0, 0, 0, 0, 1, 0, 0, 1, 0 },
+                                { 1, 1, 1, 1, 0, 1, 0, 0, 1, 0 },
+                                { 0, 1, 0, 1, 0, 1, 0, 0, 1, 0 },
+                                { 0, 0, 0, 0, 0, 1, 0, 0, 1, 0 },
+                                { 0, 0, 1, 0, 0, 1, 0, 0, 1, 0 },
+                                { 0, 0, 0, 0, 0, 1, 0, 0, 1, 0 },
+                                { 1, 1, 1, 1, 0, 1, 0, 0, 1, 0 },
+                                { 0, 1, 0, 1, 0, 1, 0, 0, 1, 0 }};
+        }
         byte[][] resultMap = Arrays.stream(map)
                 .map((byte[] row) -> row.clone())
                 .toArray((int length) -> new byte[length][]);
@@ -24,6 +38,18 @@ public class GameLogic {
         }
         map = resultMap;
         return resultMap;
+    }
+
+    public List<String> printMap(byte[][] map) {
+        List<String> result = new ArrayList<>();
+        for(int x = 0; x < map.length; x++ ){
+            String text = "";
+            for(int y =0; y < map[0].length; y++){
+                text += " " + map[x][y];
+            }
+            result.add(text);
+        }
+        return result;
     }
 
     private void applyRuleUnderPopulation(byte[][] resultMap, int x, int y, int numOfNei) {
