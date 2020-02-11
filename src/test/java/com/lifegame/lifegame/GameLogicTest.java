@@ -33,9 +33,9 @@ public class GameLogicTest {
                         { 0, 1, 0, 1 } };
         byte mapResult[][] = {  { 0, 0, 0, 0 },
                                 { 0, 0, 0, 0 },
-                                { 0, 0, 0, 0 },
+                                { 0, 1, 1, 0 },
                                 { 1, 1, 0, 0 },
-                                { 0, 1, 0, 0 } };
+                                { 1, 1, 0, 0 } };
         GameLogic gl = new GameLogic();
         byte[][] mapFromDoStep = gl.doStep(map);
         printMap(mapFromDoStep);
@@ -45,15 +45,15 @@ public class GameLogicTest {
     @Test
     void overPopulationTest(){
         byte map[][] = {{ 0, 0, 0, 0 },
-                { 0, 0, 1, 0 },
-                { 0, 0, 0, 0 },
-                { 1, 1, 1, 1 },
-                { 0, 1, 0, 1 } };
+                        { 0, 0, 1, 0 },
+                        { 0, 0, 0, 0 },
+                        { 1, 1, 1, 1 },
+                        { 0, 1, 0, 1 } };
         byte mapResult[][] = {  { 0, 0, 0, 0 },
-                { 0, 0, 0, 0 },
-                { 0, 0, 0, 0 },
-                { 1, 1, 0, 1 },
-                { 0, 1, 0, 1 } };
+                                { 0, 0, 0, 0 },
+                                { 0, 0, 0, 1 },
+                                { 1, 1, 0, 1 },
+                                { 1, 1, 0, 1 } };
         GameLogic gl = new GameLogic();
         byte[][] mapFromDoStep = gl.doStep(map);
         printMap(mapFromDoStep);
@@ -71,7 +71,7 @@ public class GameLogicTest {
                                 { 0, 0, 0, 0 },
                                 { 0, 1, 1, 0 },
                                 { 0, 1, 1, 0 },
-                                { 0, 1, 1, 1 } };
+                                { 0, 1, 1, 0 } };
         GameLogic gl = new GameLogic();
         byte[][] mapFromDoStep = gl.doStep(map);
         printMap(mapFromDoStep);
@@ -108,7 +108,7 @@ public class GameLogicTest {
                         { 1, 1, 0, 1 },
                         { 0, 1, 0, 1 } };
         GameLogic gl = new GameLogic();
-        assertThat(gl.checkNumberOfNeighbours(map,2,2)).isEqualTo(2);
+        assertThat(gl.checkNumberOfNeighbours(map,2,2)).isEqualTo(3);
     }
 
 

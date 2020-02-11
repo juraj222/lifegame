@@ -29,6 +29,13 @@ public class GameLogicController {
     return "redirect:/";
   }
 
+  @GetMapping("/generateRandom")
+  public String generateRandomMapSession(HttpSession session){
+    session.setAttribute("map", gl.createRandomMap(100));
+    return "redirect:/";
+  }
+
+
   @GetMapping("/")
   public String getMain(HttpSession session, Model model){
     byte[][] map = (byte[][])session.getAttribute("map");

@@ -3,6 +3,7 @@ package com.lifegame.lifegame.services;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.stereotype.Service;
 
@@ -38,6 +39,17 @@ public class GameLogic {
         }
         map = resultMap;
         return resultMap;
+    }
+
+    public byte[][] createRandomMap(int size) {
+        Random rand = new Random();
+        byte[][] map = new byte[size][size];
+        for(int x = 0; x < map.length; x++ ) {
+            for (int y = 0; y < map[0].length; y++) {
+                map[x][y] = (byte) rand.nextInt(2);
+            }
+        }
+        return map;
     }
 
     public List<List<String>> printMap(byte[][] map) {

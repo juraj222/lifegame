@@ -15,10 +15,13 @@
 <body>
 
 <main role="main" class="container" id="main">
-TEST
-<!--  <div id="game" th:text="${map}">Test</div>-->
+  <h1>Conway’s Game Of Life</h1>
+  <a href="https://www.geeksforgeeks.org/program-for-conways-game-of-life/">learn more</a>
   <form action="#" th:action="@{'/clear'}">
     <button type="submit" id="clear">clear</button>
+  </form>
+  <form action="#" th:action="@{'/generateRandom'}">
+    <button type="submit" id="generateRandom">generate random map</button>
   </form>
   <table border="1">
     <th:block th:each="map : ${maps}">
@@ -39,7 +42,7 @@ TEST
   $(document).ready(function(){
     setInterval(function(){
       $("#main").load(window.location.href + " #main" );
-    }, 1500);
+    }, 1000);
   });
 </script>
 <!-- /.container -->
