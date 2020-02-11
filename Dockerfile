@@ -6,4 +6,4 @@ WORKDIR /usr/src/demo
 
 EXPOSE 8081
 
-CMD ["java", "-jar", "demo-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "lifegame-0.0.1-SNAPSHOT.jar"]
