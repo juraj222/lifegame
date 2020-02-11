@@ -8,12 +8,13 @@
 
   <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
   <link rel="stylesheet" th:href="@{/css/main.css}"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 </head>
 
 <body>
 
-<main role="main" class="container">
+<main role="main" class="container" id="main">
 TEST
 <!--  <div id="game" th:text="${map}">Test</div>-->
   <form action="#" th:action="@{'/clear'}">
@@ -33,12 +34,14 @@ TEST
 <!--  <ol>-->
 <!--    <li th:each="map : ${maps}" th:text="${map}"></li>-->
 <!--  </ol>-->
-  <script>
-    setTimeout(function(){
-      window.location.reload();
-    }, 1000);
-  </script>
 </main>
+<script>
+  $(document).ready(function(){
+    setInterval(function(){
+      $("#main").load(window.location.href + " #main" );
+    }, 1500);
+  });
+</script>
 <!-- /.container -->
 
 <script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
