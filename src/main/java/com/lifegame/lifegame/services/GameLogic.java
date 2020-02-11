@@ -40,17 +40,29 @@ public class GameLogic {
         return resultMap;
     }
 
-    public List<String> printMap(byte[][] map) {
-        List<String> result = new ArrayList<>();
+    public List<List<String>> printMap(byte[][] map) {
+        List<List<String>> result = new ArrayList<>();
         for(int x = 0; x < map.length; x++ ){
-            String text = "";
+            List<String> inResult = new ArrayList<>();
             for(int y =0; y < map[0].length; y++){
-                text += " " + map[x][y];
+                inResult.add(map[x][y] + "");
             }
-            result.add(text);
+            result.add(inResult);
         }
         return result;
     }
+
+//    public List<String> printMap(byte[][] map) {
+//        List<String> result = new ArrayList<>();
+//        for(int x = 0; x < map.length; x++ ){
+//            String text = "";
+//            for(int y =0; y < map[0].length; y++){
+//                text += " " + map[x][y];
+//            }
+//            result.add(text);
+//        }
+//        return result;
+//    }
 
     private void applyRuleUnderPopulation(byte[][] resultMap, int x, int y, int numOfNei) {
         if(numOfNei < 2 && resultMap[x][y] != 0) {

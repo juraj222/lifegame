@@ -19,40 +19,25 @@ TEST
   <form action="#" th:action="@{'/clear'}">
     <button type="submit" id="clear">clear</button>
   </form>
-  <table>
+  <table border="1">
     <th:block th:each="map : ${maps}">
       <tr>
-        <td th:text="${map}"></td>
+        <th:block th:each="point : ${map}">
+          <td th:if="${point} == '1'" bgcolor="#000000" width="10px" height="10px"></td>
+          <td th:if="${point} == '0'" width="10px" height="10px"></td>
+<!--          <td th:text="${point}"></td>-->
+        </th:block>
       </tr>
     </th:block>
   </table>
-  <ol>
-    <li th:each="map : ${maps}" th:text="${map}"></li>
-  </ol>
+<!--  <ol>-->
+<!--    <li th:each="map : ${maps}" th:text="${map}"></li>-->
+<!--  </ol>-->
   <script>
     setTimeout(function(){
       window.location.reload();
     }, 1000);
   </script>
-  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
-  <!--<script>-->
-  <!--  function setTime() {-->
-  <!--    // get a new date (locale machine date time)-->
-  <!--    var date = new Date();-->
-  <!--    // get the date as a string-->
-  <!--    var n = date.toDateString();-->
-  <!--    // get the time as a string-->
-  <!--    var time = date.toLocaleTimeString();-->
-  <!--    document.getElementById("game").innerHTML = time;-->
-  <!--  }-->
-  <!--</script>-->
-  <!--<script>-->
-  <!--  $(document).ready(function(){-->
-  <!--    setInterval(function(){-->
-  <!--      $("#game").load(window.location.href + " #game" );-->
-  <!--    }, 3000);-->
-  <!--  });-->
-  <!--</script>-->
 </main>
 <!-- /.container -->
 
