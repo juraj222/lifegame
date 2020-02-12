@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.stereotype.Service;
 
@@ -37,6 +38,15 @@ public class GameLogic {
             pool.execute(runnable);
         }
 
+        pool.shutdown();
+        try {
+            if (!pool.awaitTermination(2, TimeUnit.SECONDS)) {
+                pool.shutdownNow();
+            }
+        } catch (InterruptedException ex) {
+            pool.shutdownNow();
+            Thread.currentThread().interrupt();
+        }
 
         return resultMap;
     }
