@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.springframework.stereotype.Service;
 
@@ -29,15 +31,13 @@ public class GameLogic {
                 .map((byte[] row) -> row.clone())
                 .toArray((int length) -> new byte[length][]);
 
+        ExecutorService pool = Executors.newFixedThreadPool(4);
         for(int x = 0; x < map.length; x++ ){
-           for(int y =0; y < map[0].length; y++){
-               int numOfNeighbours = checkNumberOfNeighbours(map, y, x);
-               applyRuleUnderPopulation(resultMap,x ,y , numOfNeighbours);
-               applyRuleOverPopulation(resultMap, x, y, numOfNeighbours);
-               applyRuleProduction(resultMap, x, y, numOfNeighbours);
-           }
+            Runnable runnable = new ApplyAllRulesTask(map, resultMap, x);
+            pool.execute(runnable);
         }
-        map = resultMap;
+
+
         return resultMap;
     }
 
@@ -75,53 +75,4 @@ public class GameLogic {
 //        }
 //        return result;
 //    }
-
-    private void applyRuleUnderPopulation(byte[][] resultMap, int x, int y, int numOfNei) {
-        if(numOfNei < 2 && resultMap[x][y] != 0) {
-            resultMap[x][y] = 0;
-        }
-    }
-
-    private void applyRuleOverPopulation(byte[][] resultMap, int x, int y, int numOfNei) {
-        if(numOfNei > 3 && resultMap[x][y] != 0) {
-            resultMap[x][y] = 0;
-        }
-    }
-
-    private void applyRuleProduction(byte[][] resultMap, int x, int y, int numOfNei) {
-        if(numOfNei == 3 && resultMap[x][y] != 1) {
-            resultMap[x][y] = 1;
-        }
-    }
-
-    public int checkNumberOfNeighbours(byte[][] map, int y, int x) {
-        int neighbours = 0;
-        if(x-1 >= 0 && map[x-1][y] == 1){
-            neighbours++;
-        }
-        if(x+1 < map.length && map[x+1][y] == 1){
-            neighbours++;
-        }
-        if(y-1 >= 0 && map[x][y-1] == 1){
-            neighbours++;
-        }
-        if(y+1 < map[0].length && map[x][y+1] == 1){
-            neighbours++;
-        }
-
-        //corners
-        if((x-1 >= 0 && y-1 >= 0) && map[x-1][y-1] == 1){
-            neighbours++;
-        }
-        if((x+1 < map.length && y+1 < map[0].length) && map[x+1][y+1] == 1){
-            neighbours++;
-        }
-        if((y-1 >= 0 && x+1 < map.length) && map[x+1][y-1] == 1){
-            neighbours++;
-        }
-        if((x-1 >= 0 && y+1 < map[0].length) && map[x-1][y+1] == 1){
-            neighbours++;
-        }
-        return neighbours;
-    }
 }

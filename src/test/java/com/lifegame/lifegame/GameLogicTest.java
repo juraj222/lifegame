@@ -78,61 +78,61 @@ public class GameLogicTest {
         assertThat(mapFromDoStep).isEqualTo(mapResult);
     }
 
-    @Test
-    void checkNeighboursZero(){
-        byte map[][] = {{ 0, 0, 0, 0 },
-                        { 0, 0, 1, 0 },
-                        { 0, 0, 0, 0 },
-                        { 1, 1, 0, 1 },
-                        { 0, 1, 0, 1 } };
-        GameLogic gl = new GameLogic();
-        assertThat(gl.checkNumberOfNeighbours(map,0,0)).isEqualTo(0);
-    }
-
-    @Test
-    void checkNeighboursZero2(){
-        byte map[][] = {{ 0, 0, 0, 0 },
-                        { 0, 0, 1, 0 },
-                        { 0, 0, 0, 0 },
-                        { 1, 1, 0, 1 },
-                        { 0, 1, 0, 1 } };
-        GameLogic gl = new GameLogic();
-        assertThat(gl.checkNumberOfNeighbours(map,2,1)).isEqualTo(0);
-    }
-
-    @Test
-    void checkNeighboursNonZero(){
-        byte map[][] = {{ 0, 0, 0, 0 },
-                        { 0, 0, 1, 0 },
-                        { 0, 0, 0, 0 },
-                        { 1, 1, 0, 1 },
-                        { 0, 1, 0, 1 } };
-        GameLogic gl = new GameLogic();
-        assertThat(gl.checkNumberOfNeighbours(map,2,2)).isEqualTo(3);
-    }
-
-
-    @Test
-    void checkNeighboursNonZero2(){
-        byte map[][] = {{ 0, 0, 0, 0 },
-                        { 0, 0, 0, 0 },
-                        { 0, 1, 1, 1 },
-                        { 0, 1, 0, 1 },
-                        { 0, 1, 1, 1 } };
-        GameLogic gl = new GameLogic();
-        assertThat(gl.checkNumberOfNeighbours(map,2,3)).isEqualTo(8);
-    }
-
-    @Test
-    void checkNeighboursNonZero3(){
-        byte map[][] = {{ 0, 0, 0, 0 },
-                        { 0, 0, 0, 0 },
-                        { 0, 0, 0, 0 },
-                        { 1, 1, 0, 0 },
-                        { 0, 1, 0, 0 } };
-        GameLogic gl = new GameLogic();
-        assertThat(gl.checkNumberOfNeighbours(map,1,3)).isEqualTo(2);
-    }
+//    @Test
+//    void checkNeighboursZero(){
+//        byte map[][] = {{ 0, 0, 0, 0 },
+//                        { 0, 0, 1, 0 },
+//                        { 0, 0, 0, 0 },
+//                        { 1, 1, 0, 1 },
+//                        { 0, 1, 0, 1 } };
+//        GameLogic gl = new GameLogic();
+//        assertThat(gl.checkNumberOfNeighbours(map,0,0)).isEqualTo(0);
+//    }
+//
+//    @Test
+//    void checkNeighboursZero2(){
+//        byte map[][] = {{ 0, 0, 0, 0 },
+//                        { 0, 0, 1, 0 },
+//                        { 0, 0, 0, 0 },
+//                        { 1, 1, 0, 1 },
+//                        { 0, 1, 0, 1 } };
+//        GameLogic gl = new GameLogic();
+//        assertThat(gl.checkNumberOfNeighbours(map,2,1)).isEqualTo(0);
+//    }
+//
+//    @Test
+//    void checkNeighboursNonZero(){
+//        byte map[][] = {{ 0, 0, 0, 0 },
+//                        { 0, 0, 1, 0 },
+//                        { 0, 0, 0, 0 },
+//                        { 1, 1, 0, 1 },
+//                        { 0, 1, 0, 1 } };
+//        GameLogic gl = new GameLogic();
+//        assertThat(gl.checkNumberOfNeighbours(map,2,2)).isEqualTo(3);
+//    }
+//
+//
+//    @Test
+//    void checkNeighboursNonZero2(){
+//        byte map[][] = {{ 0, 0, 0, 0 },
+//                        { 0, 0, 0, 0 },
+//                        { 0, 1, 1, 1 },
+//                        { 0, 1, 0, 1 },
+//                        { 0, 1, 1, 1 } };
+//        GameLogic gl = new GameLogic();
+//        assertThat(gl.checkNumberOfNeighbours(map,2,3)).isEqualTo(8);
+//    }
+//
+//    @Test
+//    void checkNeighboursNonZero3(){
+//        byte map[][] = {{ 0, 0, 0, 0 },
+//                        { 0, 0, 0, 0 },
+//                        { 0, 0, 0, 0 },
+//                        { 1, 1, 0, 0 },
+//                        { 0, 1, 0, 0 } };
+//        GameLogic gl = new GameLogic();
+//        assertThat(gl.checkNumberOfNeighbours(map,1,3)).isEqualTo(2);
+//    }
 
     private void printMap(byte[][] map){
         for(int x = 0; x < map.length; x++ ){
